@@ -1,0 +1,49 @@
+name: Refresh profile visuals
+
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: profile-visuals
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out profile
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Refresh public GitHub snapshot
+        run: python3 scripts/update_activity.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Animate the public contribution calendar
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: RyanLu0203
+          outputs: |
+            assets/snake-light.svg?color_snake=#7776cf&color_dots=#e9f4f1,#b9e6d8,#7ed2ba,#3bb99b,#158778
+            assets/snake-dark.svg?palette=github-dark&color_snake=#a5a0f3&color_dots=#172b36,#1d5b56,#23887b,#3fb8a0,#7ce1c6
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Save refreshed assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/activity-light.svg assets/activity-dark.svg assets/snake-light.svg assets/snake-dark.svg
+          if git diff --cached --quiet; then
+            echo 'Profile visuals are current.'
+          else
+            git commit -m 'Refresh public profile visuals'
+            git push
+          fi
