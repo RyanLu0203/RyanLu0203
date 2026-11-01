@@ -4,10 +4,10 @@
 </picture>
 
 <p align="center">
-  <a href="#projects"><img src="./assets/badge-agri.svg" alt="农业软件需求开发" height="28" /></a>
-  <a href="#projects"><img src="./assets/badge-risk.svg" alt="金融风控与安全平台开发" height="28" /></a>
-  <a href="#projects"><img src="./assets/badge-quant.svg" alt="量化与股票系统开发" height="28" /></a>
-  <a href="#projects"><img src="./assets/badge-workflow.svg" alt="工作流研究" height="28" /></a>
+  <a href="#user-content-projects"><img src="./assets/badge-agri.svg" alt="农业软件需求开发" height="28" /></a>
+  <a href="#user-content-projects"><img src="./assets/badge-risk.svg" alt="金融风控与安全平台开发" height="28" /></a>
+  <a href="#user-content-projects"><img src="./assets/badge-quant.svg" alt="量化与股票系统开发" height="28" /></a>
+  <a href="#user-content-projects"><img src="./assets/badge-workflow.svg" alt="工作流研究" height="28" /></a>
 </p>
 
 <img src="./assets/typing.svg" alt="循环介绍：农业软件、金融风控安全平台、量化股票系统与工作流研究" width="100%" />
@@ -17,9 +17,9 @@
 <p align="center">从业务需求出发，让数据、规则与软件形成可验证的工作流。</p>
 
 <p align="center">
-  <a href="#projects">🧭 四个方向</a> &nbsp; / &nbsp;
-  <a href="#toolbox">🛠️ 技术工具</a> &nbsp; / &nbsp;
-  <a href="#activity">⚡ GitHub 动态</a>
+  <a href="#user-content-projects">🧭 四个方向</a> &nbsp; / &nbsp;
+  <a href="#user-content-toolbox">🛠️ 技术工具</a> &nbsp; / &nbsp;
+  <a href="#user-content-activity">⚡ GitHub 动态</a>
 </p>
 
 我是 **Lu Xinyu**，BNBU 商业分析方向学生。关注农业与金融场景的软件开发，以及工具协作、知识管理与可复用工作流。
