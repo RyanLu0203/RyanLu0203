@@ -75,20 +75,25 @@ def hero(theme):
 
 def typing():
     lines=['Exploring agricultural software & decision tools', 'Building financial risk & security platforms', 'Developing quant research & equity systems', 'Connecting tools, knowledge & reusable workflows']
-    body=f'''<defs><clipPath id="type"><rect x="0" y="0" width="1000" height="52"><animate attributeName="width" values="0;1000;1000;0" keyTimes="0;.52;.9;1" dur="5s" repeatCount="indefinite"/></rect></clipPath></defs>
+    body=f'''<defs>'''
+    for i,line in enumerate(lines):
+        width=round(len(line)*16.2)
+        body+=f'<clipPath id="type{i}"><rect width="{width}" height="52"><animate attributeName="width" values="0;{width};{width};0" keyTimes="0;.52;.9;1" dur="5s" repeatCount="indefinite"/></rect></clipPath>'
+    body+=f'''</defs>
     <rect x="1" y="1" width="1198" height="126" rx="18" fill="#112c3c" stroke="#285163"/>
     <circle cx="27" cy="24" r="5" fill="#ff8b86"/><circle cx="46" cy="24" r="5" fill="#f4cb6a"/><circle cx="65" cy="24" r="5" fill="#70d5b5"/>
     <text x="95" y="29" font-family="{MONO}" font-size="13" fill="#91b3c6">ryan@lab:~ / focus</text>
     <text x="32" y="87" font-family="{MONO}" font-size="28" fill="#6ee7cc">❯</text>
-    <g transform="translate(66 51)"><g clip-path="url(#type)">'''
+    <g transform="translate(66 51)">'''
     for i,line in enumerate(lines):
         if i==0: times='0;.24;.25;1'; vals='1;1;0;0'
         elif i==3: times='0;.75;.751;.999;1'; vals='0;0;1;1;0'
         else:
             s=i/4;e=(i+1)/4
             times=f'0;{s};{s+.001};{e-.01};{e};1'; vals='0;0;1;1;0;0'
-        body+=f'<text x="0" y="36" opacity="{1 if i==0 else 0}" font-family="{MONO}" font-size="27" fill="#d9f6f1">{escape(line)}<animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="20s" repeatCount="indefinite"/></text>'
-    body+='</g><rect x="0" y="8" width="3" height="34" fill="#6ee7cc"><animate attributeName="x" values="0;1000;1000;0" keyTimes="0;.52;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect></g>'
+        width=round(len(line)*16.2)
+        body+=f'<g opacity="{1 if i==0 else 0}"><animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="20s" repeatCount="indefinite"/><g clip-path="url(#type{i})"><text x="0" y="36" textLength="{width}" lengthAdjust="spacing" font-family="{MONO}" font-size="27" fill="#d9f6f1">{escape(line)}</text></g><rect x="0" y="8" width="3" height="34" fill="#6ee7cc"><animate attributeName="x" values="0;{width};{width};0" keyTimes="0;.52;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect></g>'
+    body+='</g>'
     return svg(1200,128,'Rotating typed introduction for four research and development interests',body)
 
 def divider():
